@@ -1,12 +1,12 @@
 import random,time,math,shelve
 import os.path
-
+from llist import sllist
 import pygame
 import pygame.locals as pl
 
 pygame.font.init()
 
-from pygame.math import Vector2
+
 pygame.init()
 
 ##colors
@@ -153,14 +153,14 @@ dmg_sound=pygame.mixer.Sound(r'C:\Users\tonyh\OneDrive\Desktop\programing\python
 
 space_music=pygame.mixer_music.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\sounds\space_music.wav')
 
-bullet_sound.set_volume(0.1)
-alien_sound.set_volume(0.2)
-gameover_sound.set_volume(0.5)
-menu_music.set_volume(0.1)
-alien_bullet_sound.set_volume(0.5)
-bullethit_sound.set_volume(0.5)
-dmg_sound.set_volume(0.1)
-pygame.mixer_music.set_volume(1)
+bullet_sound.set_volume(0.05)
+alien_sound.set_volume(0.1)
+gameover_sound.set_volume(0.25)
+menu_music.set_volume(0.05)
+alien_bullet_sound.set_volume(0.25)
+bullethit_sound.set_volume(0.25)
+dmg_sound.set_volume(0.05)
+pygame.mixer_music.set_volume(0.5)
 pygame.mixer_music.play(-1)
 
 ##creating the screen
@@ -170,13 +170,12 @@ pygame.display.set_caption("Meteor Rush")
 clock=pygame.time.Clock()
 
 ##creating player
-class player(object):
-
+class player:
     def __init__(self,x,y,width,height,hitbox_x,hitbox_y,weapon):
-        self.x = 400
-        self.y = 420
-        self.width = 64
-        self.height = 64
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
         self.hitbox_x=hitbox_x
         self.hitbox_y=hitbox_y
         self.weapon=weapon
@@ -201,38 +200,66 @@ class player(object):
         else:
             window.blit(char, (man.x, man.y))
 
-##meteors,etc..
-class projectiles(object):
-    def __init__(self, image, vel, x, y, hitbox_x, hitbox_y,direction):
-        self.image = image
+
+##Parent class of projectiles
+class Static_Object:
+    def __init__(self,image,x,y,hitbox_x, hitbox_y):
+        self.image=image
+        self.x=x
+        self.y=y
+        self.hitbox_x=hitbox_x
+        self.hitbox_y=hitbox_y
+
+##flame from meteor
+class Flame(Static_Object):
+    def __init__(self, image, x, y, hitbox_x, hitbox_y):
+        super().__init__(image, x, y, hitbox_x, hitbox_y)
+        self.flame_count = 0
+
+##life in game
+class life(Static_Object):
+    def __init__(self, image, x, y):
+        super().__init__(image, x, y, 32, 30)
+
+
+##all kind of projectiles
+class projectiles(Static_Object):
+    def __init__(self, image, x, y, hitbox_x, hitbox_y,vel, direction):
+        super().__init__(image, x, y, hitbox_x, hitbox_y)
         self.vel = vel
-        self.x = x
-        self.y = y
-        self.hitbox_x = hitbox_x
-        self.hitbox_y = hitbox_y
-        self.flame_count=0
         self.direction=direction
-        self.count_hit=0
         self.direction_x=0
         self.direction_y=0
         self.bh_pos_x=0
         self.bh_pos_y=0
-        self.count_bullet=0
 
 
 
 
-##life in game
-class life(object):
-    def __init__(self,image,x,y):
-        self.image=image
-        self.x = x
-        self.y = y
-        self.hitbox_x=32
-        self.hitbox_y=30
+##meteors
+class Meteor(projectiles):
+    def __init__(self, image, x, y, hitbox_x, hitbox_y, vel, direction):
+        super().__init__(image, x, y, hitbox_x, hitbox_y, vel, direction)
+
+
+
+
+##alien ship
+class Alien(projectiles):
+    def __init__(self, image, x, y, hitbox_x, hitbox_y,vel, direction):
+        super().__init__(image, x, y, hitbox_x, hitbox_y,vel, direction)
+        self.alien_bullet_list=linked_list()
+        self.count_hit = 0##can go up to 3
+        self.FM=True##firemode
+
+    def FireMode(self,tf):
+        self.FM=tf
+
+
+
 
 ##bullets
-class bullets(object):
+class bullets():
     def __init__(self,x,y,image,radios,mouse_x,mouse_y,start_x,start_y,hitbox_x,hitbox_y):
          self.x=x
          self.y=y
@@ -240,8 +267,8 @@ class bullets(object):
          self.radios = radios
          self.mouse_x = mouse_x
          self.mouse_y = mouse_y
-         self.direction_x=pygame.math.Vector2
-         self.direction_y = pygame.math.Vector2
+         #self.direction_x=pygame.math.Vector2
+         #self.direction_y = pygame.math.Vector2
          self.vel=10
          self.hitbox_x=hitbox_x
          self.hitbox_y=hitbox_y
@@ -265,6 +292,7 @@ class bullets(object):
                 self.count_image=0
             window.blit(self.image[self.count_image],(self.x,self.y))
             self.count_image+=1
+
     def draw_rotate(self,window,rotate_img,rect):
         window.blit(rotate_img, rect)
 
@@ -294,9 +322,24 @@ class Button(object):
                     if click[0] and action != None:
                         action()
 
+##improved linked list
+class linked_list(sllist):
+    def index(self,obj):
+        for i in range(len(self)):
+            if self[i]==obj:
+                return i
+        return None
 
+    def Is_Empty(self):
+        if self.size>0:
+            return False
+        else:
+            return True
 
+    def Remove(self,obj):
+        node=self.nodeat(self.index(obj))
 
+        self.remove(node)
 
 ##text class
 class TextInput:
@@ -474,20 +517,28 @@ menu=True
 mainloop=True
 clicked=False
 counter_image=0
-man=player(400,420,64,64,28,60,reg_weapon)
-meteor_list=[]
+
+
+
+man=player(400,420,64,64,28,55,reg_weapon)
+#meteor_list=[]##before changing to linked list
+meteor_list=linked_list()##meteor linked list 24/7/21
 heart1=life(heart,0,0)
 heart2=life(heart,30,0)
 heart3=life(heart,60,0)
 heart_count=3
 heart_list=[heart1,heart2,heart3]
 new_life=[]
-bullet_list=[]
-change_amount=0
+##bullet_list=[]##before changing to linked list
+bullet_list=linked_list()
+change_amount=4
 random_end=25
 flame_list=[]
-alien_list=[]
-alien_bullet_list=[]
+#alien_list=[]##before changing to linked list
+alien_list=linked_list()##alien linked list 24/7/21
+zombie_alien_bullet_list=linked_list()##list of bullets of dead alien ships that are still active
+#alien_bullet_list=[]##before changing to linked list
+#alien_bullet_list=linked_list()##alien_bullet_list linked list 24/7/21
 count_step=0
 count_score=0
 new_ammo=[]
@@ -517,16 +568,48 @@ def refresh_game():
     for f in flame_list:
         draw_flame(f)
 
-    ##alien ship moving and deleting
+    ##alien ship moving and deleting##new alien bullet list
     move_alien()
     for a in alien_list:
-        if a.x>840 or a.x<0:
-            a.y=600
-        if blackhole_counter > 0:
+        if blackhole_counter==0:
+            if a.x>840 or a.x<0:
+               #a.Clear_My_Alien_Bullets()
+                a.FireMode(False)
+                if a.alien_bullet_list.Is_Empty():
+                    alien_list.Remove(a)
+            else:##going through bullet list of specific alien
+                a.FireMode(True)
+                for bullet in a.alien_bullet_list:
+                    ##deleting alien bullets from list
+                        if bullet.y < 0 or bullet.x < 0 or bullet.x > 840 or bullet.y > 480:
+                            a.alien_bullet_list.Remove(bullet)
+
+
+        elif blackhole_counter > 0:
             if a.x > constant_x and a.x < constant_x + 300:
                 if a.y > constant_y and a.y < constant_y + 300:
                     count_score += 50
-                    a.y=600
+                    #a.y=600
+                    alien_list.Remove(a)
+
+            for bullet in a.alien_bullet_list:
+                #if blackhole_counter > 0:
+                    if bullet.x > constant_x and bullet.x < constant_x + 300:
+                        if bullet.y > constant_y and bullet.y < constant_y + 300:
+                            a.alien_bullet_list.Remove(bullet)
+
+    ##removing dead alien bullets
+    for z in zombie_alien_bullet_list:
+        if blackhole_counter==0:
+            ##deleting alien bullets from list
+                if z.y < 0 or z.x < 0 or z.x > 840 or z.y > 480:
+                   zombie_alien_bullet_list.Remove(z)
+
+        elif blackhole_counter > 0:
+                #if blackhole_counter > 0:
+                    if z.x > constant_x and z.x < constant_x + 300:
+                        if z.y > constant_y and z.y < constant_y + 300:
+                            zombie_alien_bullet_list.Remove(z)
 
     ##checking if player is moving or not
     if man.walkCount==0:
@@ -535,12 +618,14 @@ def refresh_game():
          count_step=0
 
     ##moving and deleting meteors from list
-
+    ##consider re-creating the meteor list as a linked list,so you can get rid of meteors in the middle of the interation w/o any issue
     for meteor in meteor_list:
               meteor_move(meteor)
 
               if meteor.y>=480 and meteor.y<600:
-                   meteor.y=600
+                   #meteor.y=600##used before changing to linked list
+                   meteor_list.Remove(meteor)
+
                   ##creating flame from meteor fall
                    if count_score > 150:
                        if meteor.image!=meteor_purple:
@@ -551,31 +636,49 @@ def refresh_game():
                   if meteor.x>constant_x and meteor.x<constant_x+300:
                       if meteor.y>constant_y and meteor.y<constant_y+300:
                           count_score+=10
-                          meteor.y=600
+                          #meteor.y=600##used before changing to linked list
+                          meteor_list.Remove(meteor)
+
               ##deleting meteors:
-              if meteor.y==600:
-                  meteor_list.pop(meteor_list.index(meteor))
+              #if meteor.y==600:
+              #    meteor_list.pop(meteor_list.index(meteor))
 
 
     ##deleting player bullets from list
     for b in bullet_list:
         if b.y<0 or b.x<0 or b.x>840 or b.y>480:
-            b.y=600
+            #b.y=600
+            bullet_list.Remove(b)
 
 
 
     ##deleting alien bullets from list
-    for a in alien_bullet_list:
-        if a.y < 0 or a.x < 0 or a.x > 840 or a.y > 480:
-            if a.y<600:
-                a.y = 600
-                alien_list[a.my_alien].count_bullet-=1
-                print(str(alien_list[a.my_alien].count_bullet))
+    #for a in alien_bullet_list:
+    #    if blackhole_counter > 0:
+    #        if a.x > constant_x and a.x < constant_x + 300:
+    #            if a.y > constant_y and a.y < constant_y + 300:
+    #                #a.y=600
+    #                alien_bullet_list.remove(a)
 
-        if blackhole_counter > 0:
-            if a.x > constant_x and a.x < constant_x + 300:
-                if a.y > constant_y and a.y < constant_y + 300:
-                    a.y=600
+    #    if a.y < 0 or a.x < 0 or a.x > 840 or a.y > 480:
+    #    #if a.y >= 480 and a.y < 600:
+    #        print(alien_list)
+    #        #print(str(a.my_alien))
+
+    #        alien_list[a.my_alien].count_bullet-=1
+    #        alien_bullet_list.remove(a)
+
+            #if a.y<600:
+                #a.y = 600
+            #    if alien_list[a.my_alien].count_bullet >0:##added on 20/03/21
+            #        alien_list[a.my_alien].count_bullet-=1
+            #    print(str(alien_list[a.my_alien].count_bullet))  ##added because of a problem with negetive bullets
+            #    alien_bullet_list.remove(a)
+
+               # if alien_list[a.my_alien].count_bullet >0:##added on 20/03/21
+                #    alien_list[a.my_alien].count_bullet-=1
+                    #print(str(alien_list[a.my_alien].count_bullet)) ##added because of a problem with negetive bullets
+
 
 
     ##regular meteors
@@ -595,7 +698,7 @@ def refresh_game():
     ##creating random ammo
     if man.weapon!=reg_weapon:
         if random.randint(0,random_end*7)==2:
-            new_ammo.append(projectiles(reg_ammo, 8, random.randint(0,840), -100, 64, 64, "down"))
+            new_ammo.append(projectiles(reg_ammo,random.randint(0,840), -100, 64, 64, 8, "down"))
     ##if no ammo,switch the regular weapon
     if man.ammo<=0:
         man.weapon=reg_weapon
@@ -614,15 +717,15 @@ def refresh_game():
 def drop_weapon(x,y):
     num=random.randint(0,40)
     if num==0 or num==5:
-        new_weapon.append(projectiles(shotgun_weapon,7,x,y,98,22,"down"))
+        new_weapon.append(projectiles(shotgun_weapon,x,y,98,22,7,"down"))
     if num==1 or num==7 or num==8:
-        new_weapon.append(projectiles(bigbullet_weapon, 7, x, y, 100, 28, "down"))
+        new_weapon.append(projectiles(bigbullet_weapon,  x, y, 100, 28,7, "down"))
     elif num == 2:
-        new_weapon.append(projectiles(blackhole_weapon, 7, x, y, 100, 28, "down"))
+        new_weapon.append(projectiles(blackhole_weapon,  x, y, 100, 28,7, "down"))
     elif num == 3 or num==9:
-        new_weapon.append(projectiles(lazer_weapon, 7, x, y, 120, 38, "down"))
+        new_weapon.append(projectiles(lazer_weapon,  x, y, 120, 38,7, "down"))
     elif num == 4 or num==10 or num==11:
-        new_weapon.append(projectiles(machinegun_weapon, 7, x, y, 100, 40, "down"))
+        new_weapon.append(projectiles(machinegun_weapon,  x, y, 100, 40,7, "down"))
 ##draw weapon:
 def draw_weapon():
     window.blit(man.weapon,(0,60))
@@ -645,7 +748,7 @@ def meteor_go(x,num):
      if num==1:
          if x>=0 and x<=420:
              y=-100
-             meteor_new = projectiles(meteor_left, 5+(change_amount/4), x,y,60,56,"left")
+             meteor_new = Meteor(meteor_left,  x,y,60,56,5+(change_amount/4),"left")
              meteor_new.bh_pos_x = meteor_new.x
              meteor_new.bh_pos_y = meteor_new.y
 
@@ -655,7 +758,7 @@ def meteor_go(x,num):
 
          elif x>=421 and x<=840:
              y =-100
-             meteor_new = projectiles(meteor_right, 5+(change_amount/4), x,y,60,56,"right")
+             meteor_new = Meteor(meteor_right,  x,y,60,56,5+(change_amount/4),"right")
              meteor_new.bh_pos_x = meteor_new.x
              meteor_new.bh_pos_y = meteor_new.y
 
@@ -663,7 +766,7 @@ def meteor_go(x,num):
              #meteor_move(meteor_new)
      if num==2:
          y = -100
-         meteor_new = projectiles(meteor_purple, 7+(change_amount/4), x, y, 60, 100,"down")
+         meteor_new = Meteor(meteor_purple,  x, y, 60, 100,7+(change_amount/4),"down")
          meteor_new.bh_pos_x = meteor_new.x
          meteor_new.bh_pos_y = meteor_new.y
 
@@ -715,9 +818,10 @@ def meteor_move(meteor):
 
 ##creating the flame
 def create_flame(pos_x):
-    flame_new = projectiles(flame, 0, pos_x, 420, 60, 60,"none")
+    #flame_new = projectiles(flame, 0, pos_x, 420, 60, 60,"none")
+    flame_new=Flame(flame,pos_x,420,60,60)
     flame_list.append(flame_new)
-    draw_flame(flame_new)
+    #draw_flame(flame_new)
 
 
 
@@ -739,21 +843,22 @@ def create_alien():
 
     num=random.randint(0,1)
     if num==0:
-        alien = projectiles(alien_ship, 8, 0, random.randint(0, 220), 60, 60,"right")
+        #alien = projectiles(alien_ship, 8, 0, random.randint(0, 220), 60, 60,"right")
+        alien = Alien(alien_ship, 0, random.randint(0, 220), 60, 60,8, "right")
         alien.bh_pos_x = alien.x
         alien.bh_pos_y = alien.y
 
     elif num==1:
-        alien=projectiles(alien_ship,8,840,random.randint(0,220),60,60,"left")
+        alien=Alien(alien_ship,840,random.randint(0,220),60,60,8,"left")
         alien.bh_pos_x = alien.x
         alien.bh_pos_y = alien.y
 
-    alien.count_bullet += 1
+    #alien.count_bullet += 1
     alien_list.append(alien)
     bullet_new = bullets(round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2), alien_bullet, 8, man.x, man.y,  round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2),28,25)
-    bullet_new.my_alien=alien_list.index(alien)
-    alien_bullet_list.append(bullet_new)
-
+    #bullet_new.my_alien=alien_list.index(alien)
+    #alien_bullet_list.append(bullet_new)
+    alien.alien_bullet_list.append(bullet_new)
     move_alien()
 
 
@@ -789,47 +894,85 @@ def move_alien():
             window.blit(a.image, (a.x, a.y))
 
     ##creating another bullet if no bullets on screen
-        for a in alien_list:
-            if a.count_bullet==0:
-                if a.y<480:
-                    bullet_new = bullets(round(a.x + a.hitbox_x // 2), round(a.y + a.hitbox_y // 2), alien_bullet, 8,
-                                         man.x, man.y, round(a.x + a.hitbox_x // 2), round(a.y + a.hitbox_y // 2),28,25)
 
-                    a.count_bullet+=1
+    for a in alien_list:
+        #if a.count_bullet==0:
+        if a.alien_bullet_list.Is_Empty() and a.FM:
+            if a.y<480:
+                bullet_new = bullets(round(a.x + a.hitbox_x // 2), round(a.y + a.hitbox_y // 2), alien_bullet, 8,
+                                     man.x, man.y, round(a.x + a.hitbox_x // 2), round(a.y + a.hitbox_y // 2),28,25)
 
-                    alien_bullet_list.append(bullet_new)
+                #a.count_bullet+=1
+
+                a.alien_bullet_list.append(bullet_new)
     ##moving the alien bullet in player direction
-    for a in alien_bullet_list:
-      if a.y<480:
+        for bullet in a.alien_bullet_list:
+          if bullet.y<480:
+            if blackhole_counter==0:
+                bullet.direction_x, bullet.direction_y = bullet.mouse_x - bullet.start_x, bullet.mouse_y - bullet.start_y
+                distance = (bullet.direction_x ** 2 + bullet.direction_y ** 2) ** .5
+                if distance != 0:
+                    NORMALIZED_DISTANCE = 15
+                    multiplier = NORMALIZED_DISTANCE / distance
+
+                    bullet.direction_x *= multiplier
+                    bullet.direction_y *= multiplier
+                    bullet.x += round(bullet.direction_x)
+                    bullet.y += round(bullet.direction_y)
+                    bullet.bh_pos_x = bullet.x
+                    bullet.bh_pos_y = bullet.y
+                    bullet.draw(window)
+
+                    alien_bullet_sound.play()
+                ##move bullet toward black hole position
+            else:
+                bullet.direction_x, bullet.direction_y = constant_x + 150 - bullet.bh_pos_x, constant_y + 150 - bullet.bh_pos_y
+                distance = (bullet.direction_x ** 2 + bullet.direction_y ** 2) ** .5
+                if distance != 0:
+                    NORMALIZED_DISTANCE = 15
+                    multiplier = NORMALIZED_DISTANCE / distance
+
+                    bullet.direction_x *= multiplier
+                    bullet.direction_y *= multiplier
+                    bullet.x += round(bullet.direction_x)
+                    bullet.y += round(bullet.direction_y)
+                    window.blit(bullet.image, (bullet.x, bullet.y))
+
+        ##moving zombie bullet toward direction
+    for bullet in zombie_alien_bullet_list:
+      if bullet.y<480:
         if blackhole_counter==0:
-            a.direction_x, a.direction_y = a.mouse_x - a.start_x, a.mouse_y - a.start_y
-            distance = (a.direction_x ** 2 + a.direction_y ** 2) ** .5
+            bullet.direction_x, bullet.direction_y = bullet.mouse_x - bullet.start_x, bullet.mouse_y - bullet.start_y
+            distance = (bullet.direction_x ** 2 + bullet.direction_y ** 2) ** .5
             if distance != 0:
                 NORMALIZED_DISTANCE = 15
                 multiplier = NORMALIZED_DISTANCE / distance
 
-                a.direction_x *= multiplier
-                a.direction_y *= multiplier
-                a.x += round(a.direction_x)
-                a.y += round(a.direction_y)
-                a.bh_pos_x = a.x
-                a.bh_pos_y = a.y
-                a.draw(window)
+                bullet.direction_x *= multiplier
+                bullet.direction_y *= multiplier
+                bullet.x += round(bullet.direction_x)
+                bullet.y += round(bullet.direction_y)
+                bullet.bh_pos_x = bullet.x
+                bullet.bh_pos_y = bullet.y
+                bullet.draw(window)
 
                 alien_bullet_sound.play()
             ##move bullet toward black hole position
         else:
-            a.direction_x, a.direction_y = constant_x + 150 - a.bh_pos_x, constant_y + 150 - a.bh_pos_y
-            distance = (a.direction_x ** 2 + a.direction_y ** 2) ** .5
+            bullet.direction_x, bullet.direction_y = constant_x + 150 - bullet.bh_pos_x, constant_y + 150 - bullet.bh_pos_y
+            distance = (bullet.direction_x ** 2 + bullet.direction_y ** 2) ** .5
             if distance != 0:
                 NORMALIZED_DISTANCE = 15
                 multiplier = NORMALIZED_DISTANCE / distance
 
-                a.direction_x *= multiplier
-                a.direction_y *= multiplier
-                a.x += round(a.direction_x)
-                a.y += round(a.direction_y)
-                window.blit(a.image, (a.x, a.y))
+                bullet.direction_x *= multiplier
+                bullet.direction_y *= multiplier
+                bullet.x += round(bullet.direction_x)
+                bullet.y += round(bullet.direction_y)
+                window.blit(bullet.image, (bullet.x, bullet.y))
+
+
+##red square showing border of objects
 
 #man:
 ##pygame.draw.rect(window,red,(self.x+17,self.y+10,28,60),2)
@@ -854,7 +997,7 @@ def move_alien():
 
 ##checking for collisions
 def collision():
-    global heart_count,count_score,change_amount,constant_x,constant_y,blackhole_counter
+    global heart_count,count_score,change_amount,constant_x,constant_y,blackhole_counter, zombie_alien_bullet_list
     if heart_count>0:
         ##collision between player and regular meteor
         for meteor in meteor_list:
@@ -863,7 +1006,8 @@ def collision():
                     if man.x+17 > meteor.x and man.x+17< meteor.x + meteor.hitbox_x or  man.x+17 + man.hitbox_x > meteor.x and man.x+17 + man.hitbox_x < meteor.x + meteor.hitbox_x:
                            heart_list.pop(heart_count-1)
                            heart_count -= 1
-                           meteor_list.pop(meteor_list.index(meteor))
+                           #meteor_list.pop(meteor_list.index(meteor))
+                           meteor_list.Remove(meteor)
                            dmg_sound.play()
 
         ##collision between player and purple meteor
@@ -872,16 +1016,18 @@ def collision():
                     if man.x+17 > meteor.x and man.x+17< meteor.x + meteor.hitbox_x or  man.x+17 + man.hitbox_x > meteor.x and man.x+17 + man.hitbox_x < meteor.x + meteor.hitbox_x:
                            heart_list.pop(heart_count-1)
                            heart_count -= 1
-                           meteor_list.pop(meteor_list.index(meteor))
+                           #meteor_list.pop(meteor_list.index(meteor))
+                           meteor_list.Remove(meteor)
                            dmg_sound.play()
 
             ##collision between bullet and regular meteor
-        for meteor in meteor_list:
-             for b in bullet_list:
+        for b in bullet_list:
+             for meteor in meteor_list:
                      if meteor.image != meteor_purple:
                         if b.y < meteor.y+6 + meteor.hitbox_y and b.y > meteor.y+6 or b.y + b.hitbox_y > meteor.y+6 and b.y + b.hitbox_y < meteor.y+6 +meteor.hitbox_y:
                             if b.x > meteor.x and b.x< meteor.x + meteor.hitbox_x or  b.x+ b.hitbox_x > meteor.x and b.x + b.hitbox_x < meteor.x + meteor.hitbox_x:
                                 if meteor.y<480:
+
                                     if b.image==blackhole_bullet:
                                         blackhole_counter+=1
                                         constant_x=meteor.x
@@ -893,23 +1039,29 @@ def collision():
                                     ##create ammo prize
 
                                     if random.randint(0,random_end+35)==1:
-                                        new_ammo.append(projectiles(reg_ammo,8,meteor.x,meteor.y,64,64,"down"))
+                                        new_ammo.append(projectiles(reg_ammo,meteor.x,meteor.y,64,64,8,"down"))
 
                                     ##creating weapon prize
                                     if random.randint(0,3)==3:
                                         drop_weapon(meteor.x,meteor.y)
-                                    if b.image!=lazer_bullet:
-                                        bullet_list.pop(bullet_list.index(b))
+                                    meteor_list.Remove(meteor)
 
+                                    bullethit_sound.play()
+                                    count_score += 10
+
+                                    if b.image!=lazer_bullet:
+                                        #bullet_list.pop(bullet_list.index(b))
+                                        bullet_list.Remove(b)
+                                        break
 
 
                                     #meteor_list.pop(meteor_list.index(meteor))
+                                    #meteor_list.remove(meteor)##with linked list##not working always
 
                                     ##changing the height of the meteor to make him disapper without having a problem with the list.
-                                    meteor.y=600
+                                    #meteor.y=600
 
-                                    bullethit_sound.play()
-                                    count_score+=10
+
                                     ##increasing the difficulty of the game
                                     if count_score%50==0 and change_amount<16:
                                         change_amount+=2
@@ -939,19 +1091,28 @@ def collision():
                                      ##create ammo prize
 
                                      if random.randint(0, random_end+35) == 1:
-                                         new_ammo.append(projectiles(reg_ammo, 8, meteor.x, meteor.y, 64, 64, "down"))
+                                         new_ammo.append(projectiles(reg_ammo,  meteor.x, meteor.y, 64, 64,8, "down"))
 
                                      ##creating weapon prize
                                      if random.randint(0, 3) == 3:
                                          drop_weapon(meteor.x, meteor.y)
 
-                                     if b.image != lazer_bullet:
-                                         #bullet_list.pop(bullet_list.index(b))
-                                         b.y=600
-                                     #meteor_list.pop(meteor_list.index(meteor))
-                                     meteor.y = 600
                                      bullethit_sound.play()
                                      count_score += 10
+
+                                     meteor_list.Remove(meteor)  ##with linked list
+
+                                     if b.image != lazer_bullet:
+                                         #bullet_list.pop(bullet_list.index(b))
+                                         #b.y=600
+                                         bullet_list.Remove(b)
+                                         break
+
+                                     #meteor_list.pop(meteor_list.index(meteor))
+                                     #meteor.y = 600
+
+
+
 
                                      ##increasing the difficulty of the game
                                      if count_score % 50 == 0 and change_amount < 16:
@@ -972,7 +1133,7 @@ def collision():
                         if b.x  > a.x and b.x  < a.x + a.hitbox_x or b.x  + b.hitbox_x > a.x and b.x  + b.hitbox_x < a.x + a.hitbox_x:
                                 #bullet_list.pop(bullet_list.index(b))
                                 if a.y<480:
-                                    b.y=600
+                                    #b.y=600
                                     if b.image == blackhole_bullet:
                                         blackhole_counter += 1
                                         constant_x = a.x
@@ -981,13 +1142,18 @@ def collision():
                                     if a.count_hit==3:
                                         new_life.append(life(heart, a.x, a.y))
                                         #alien_list.pop(alien_list.index(a))
-                                        a.y=600
+                                        #a.y=600
+                                        #a.Clear_My_Alien_Bullets()
+                                        zombie_alien_bullet_list+=a.alien_bullet_list
+                                        alien_list.Remove(a)  ##linked list
+
                                         bullethit_sound.play()
                                         count_score+=50
                                         ##adding ammo for destroying the ship:
                                         if man.weapon != reg_weapon and man.weapon!=blackhole_weapon:
                                             man.ammo += 15
-
+                                    bullet_list.Remove(b)
+                                    break
 
         
 
@@ -1046,14 +1212,25 @@ def collision():
                         flame_list.pop(flame_list.index(f))
                         dmg_sound.play()
         ##collision between player and alien bullet
-        for a in alien_bullet_list:
-            if man.y+10 < a.y + a.hitbox_y and man.y+10 > a.y or man.y+10 + man.hitbox_y > a.y and man.y+10 + man.hitbox_y < a.y + a.hitbox_y:
-                if man.x+17 > a.x and man.x+17 < a.x + a.hitbox_x or man.x+17 + man.hitbox_x > a.x and man.x+17 + man.hitbox_x < a.x + a.hitbox_x:
-                    heart_list.pop(heart_count - 1)
-                    heart_count -= 1
-                    #alien_bullet_list.pop(alien_bullet_list.index(a))
-                    a.y=600
-                    dmg_sound.play()
+        for a in alien_list:
+            for b in a.alien_bullet_list:
+                if man.y+10 < b.y + b.hitbox_y and man.y+10 > b.y or man.y+10 + man.hitbox_y > b.y and man.y+10 + man.hitbox_y < b.y + b.hitbox_y:
+                    if man.x+17 > b.x and man.x+17 < b.x + b.hitbox_x or man.x+17 + man.hitbox_x > b.x and man.x+17 + man.hitbox_x < b.x + b.hitbox_x:
+                        heart_list.pop(heart_count - 1)
+                        heart_count -= 1
+                        #alien_bullet_list.pop(alien_bullet_list.index(a))
+                        #a.y=600
+                        #alien_list[a.my_alien].count_bullet -= 1
+                        a.alien_bullet_list.Remove(b)
+
+                        ##alien bullet
+                        # pygame.draw.rect(window, red, (self.x , self.y , self.hitbox_x, self.hitbox_y), 2)
+
+                        ##man
+                        ##pygame.draw.rect(window,red,(self.x+17,self.y+10,28,60),2)
+
+
+                        dmg_sound.play()
 
 
 
@@ -1384,27 +1561,32 @@ def enter_name():
 ##main game:
 def main_game():
     global menu,mainloop,clicked,heart_count,meteor_list,heart1,heart2,heart3,heart_list,new_life,bullet_list,change_amount,\
-        flame_list,alien_list,alien_bullet_list,count_step,count_score,new_ammo,text_loop,high_score,hs_name,is_pause,blackhole_counter, \
+        flame_list,alien_list,alien_bullet_list,zombie_alien_bullet_list,count_step,count_score,new_ammo,text_loop,high_score,hs_name,is_pause,blackhole_counter, \
         constant_x,constant_y
     ##variables are here as well for restarting the game
     start_time=time.time()
     mainloop=True
     heart_count = 3
-    meteor_list = []
+    #meteor_list = []
+    meteor_list=linked_list()
     heart1 = life(heart, 0, 0)
     heart2 = life(heart, 30, 0)
     heart3 = life(heart, 60, 0)
     heart_list = [heart1, heart2, heart3]
     new_life = []
-    bullet_list = []
+    #bullet_list = []
+    bullet_list=linked_list()
     change_amount = 0
     flame_list = []
-    alien_list = []
-    alien_bullet_list = []
+    #alien_list = []
+    alien_list=linked_list()
+    zombie_alien_bullet_list = linked_list()  ##list of bullets of dead alien ships that are still active
+    #alien_bullet_list = []
     count_step = 0
     count_score = 0
     new_ammo = []
-    man.ammo=25
+    man.ammo=0
+    man.weapon=reg_weapon
     menu_music.stop()
     while mainloop:
         clock.tick(27)
@@ -1492,6 +1674,7 @@ def main_game():
 
         if not is_pause:
             refresh_game()
+
 
 
         
