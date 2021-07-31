@@ -24,6 +24,8 @@ d.close()
 
 
 ##images
+
+##man images
 walkRight = [pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R1.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R2.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R3.png'),
              pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R4.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R5.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R6.png'),
              pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R7.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R8.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\R9.png')]
@@ -31,6 +33,7 @@ walkLeft = [pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\pytho
             pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\L4.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\L5.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\L6.png'),
             pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\L7.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\L8.png'), pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\L9.png')]
 char = pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\standing.png')
+
 bg_menu=[pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame0.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame1.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame2.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame3.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame4.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame5.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame6.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame7.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame8.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame9.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame10.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame11.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame12.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame13.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame14.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame15.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame16.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame17.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame18.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame19.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame20.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame21.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame22.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame23.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame24.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame25.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame26.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame27.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame28.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame29.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame30.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame31.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame32.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame33.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame34.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame35.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame36.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame37.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame38.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame39.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame40.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame41.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame42.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame43.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame44.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame45.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame46.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame47.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame48.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame49.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame50.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame51.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame52.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame53.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame54.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame55.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame56.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame57.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame58.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame59.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame60.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame61.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame62.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame63.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame64.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame65.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame66.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame67.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame68.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame69.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame70.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame71.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame72.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame73.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame74.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame75.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame76.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame77.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame78.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame79.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame80.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame81.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame82.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame83.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame84.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame85.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame86.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame87.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame88.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame89.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame90.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame91.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame92.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame93.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame94.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame95.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame96.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame97.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame98.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame99.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame100.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame101.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame102.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame103.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame104.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame105.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame106.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame107.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame108.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame109.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame110.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame111.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame112.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame113.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame114.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame115.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame116.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame117.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame118.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame119.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame120.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame121.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame122.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame123.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame124.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame125.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame126.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame127.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame128.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame129.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame130.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame131.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame132.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame133.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame134.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame135.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame136.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame137.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame138.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame139.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame140.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame141.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame142.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame143.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame144.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame145.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame146.jpg'),pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\menu_bg\frame147.jpg')
 ]
 blackhole_img=[pygame.image.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\blackhole'
@@ -153,6 +156,7 @@ dmg_sound=pygame.mixer.Sound(r'C:\Users\tonyh\OneDrive\Desktop\programing\python
 
 space_music=pygame.mixer_music.load(r'C:\Users\tonyh\OneDrive\Desktop\programing\python\pictures\learning_img\sounds\space_music.wav')
 
+##sounds init
 bullet_sound.set_volume(0.05)
 alien_sound.set_volume(0.1)
 gameover_sound.set_volume(0.25)
@@ -169,15 +173,35 @@ window=pygame.display.set_mode((840,480))
 pygame.display.set_caption("Meteor Rush")
 clock=pygame.time.Clock()
 
-##creating player
-class player:
-    def __init__(self,x,y,width,height,hitbox_x,hitbox_y,weapon):
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+
+########Classes
+
+##Parent class of projectiles,player,bullets,Flame and life
+class Static_Object:
+    def __init__(self,image,x,y,hitbox_x, hitbox_y):
+        self.image=image
+        self.x=x
+        self.y=y
         self.hitbox_x=hitbox_x
         self.hitbox_y=hitbox_y
+
+##man images
+class man_imgs:
+    def __init__(self,wr,wl,c):
+        self.walkRight=wr
+        self.walkLeft=wl
+        self.char=c
+
+##creating player
+class player(Static_Object):
+    def __init__(self, x, y, width, height, hitbox_x, hitbox_y, weapon, image):
+        super().__init__(image, x, y, hitbox_x, hitbox_y)
+        #self.x = x
+        #self.y = y
+        self.width = width
+        self.height = height
+        #self.hitbox_x=hitbox_x
+        #self.hitbox_y=hitbox_y
         self.weapon=weapon
         self.name=""
         self.vel = 10
@@ -187,8 +211,22 @@ class player:
         self.right = False
         self.walkCount = 0
         self.ammo=0
-        ##walking animation
-    def draw(self,window):
+
+    ##walking animation
+
+    def draw(self, window):
+        if self.walkCount + 1 >= 27:
+            self.walkCount = 0
+        if self.right:
+            window.blit(self.image.walkRight[self.walkCount // 3], (self.x, self.y))
+            self.walkCount += 1
+        elif self.left:
+            window.blit(self.image.walkLeft[self.walkCount // 3], (self.x, self.y))
+            self.walkCount += 1
+        else:
+            window.blit(self.image.char, (self.x, self.y))
+
+    """def draw(self,window):
         if man.walkCount + 1 >= 27:
             man.walkCount = 0
         if man.right:
@@ -198,17 +236,9 @@ class player:
             window.blit(walkLeft[man.walkCount // 3], (man.x, man.y))
             man.walkCount += 1
         else:
-            window.blit(char, (man.x, man.y))
+            window.blit(char, (man.x, man.y))"""
 
 
-##Parent class of projectiles
-class Static_Object:
-    def __init__(self,image,x,y,hitbox_x, hitbox_y):
-        self.image=image
-        self.x=x
-        self.y=y
-        self.hitbox_x=hitbox_x
-        self.hitbox_y=hitbox_y
 
 ##flame from meteor
 class Flame(Static_Object):
@@ -256,10 +286,69 @@ class Alien(projectiles):
         self.FM=tf
 
 
+##base class of all bullets
+class bullets(Static_Object):
+    def __init__(self, x, y, image, radios, mouse_x, mouse_y, start_x, start_y, hitbox_x, hitbox_y):
+         super().__init__(image, x, y, hitbox_x, hitbox_y)
+         self.radios = radios
+         self.mouse_x = mouse_x
+         self.mouse_y = mouse_y
+         self.start_x=start_x
+         self.start_y=start_y
+         self.direction_x=None
+         self.direction_y =None
+         #self.count_image=0
+         #self.ShotGunList=[]
+         #self.IsShotGun_main=False
+         self.angle=0
+         #self.distance=0
+         self.bh_pos_x = 0
+         self.bh_pos_y = 0
+         #self.my_alien=0
+
+    ##drawing the bullet
+    def draw(self,window):
+        #if self.image!=big_bullet:
+        window.blit(self.image, (self.x, self.y))
+
+        """elif self.image==big_bullet:
+            if self.count_image==2:
+                self.count_image=0
+            window.blit(self.image[self.count_image],(self.x,self.y))
+            self.count_image+=1"""
+
+    def draw_rotate(self,window1,rotate_img,rect):##used by lazer and shotgun bullet
+        window1.blit(rotate_img, rect)
+
+##alien bullets
+#class alien_bullets(bullets):
+#    def __init__(self, x, y, image, radios, mouse_x, mouse_y, start_x, start_y, hitbox_x, hitbox_y):
+#        super().__init__(x, y, image, radios, mouse_x, mouse_y, start_x, start_y, hitbox_x, hitbox_y)
+        #self.my_alien = 0##not sure if i need this
+
+##big bullets
+class big_bullets(bullets):
+    def __init__(self, x, y, image, radios, mouse_x, mouse_y, start_x, start_y, hitbox_x, hitbox_y):
+        super().__init__(x, y, image, radios, mouse_x, mouse_y, start_x, start_y, hitbox_x, hitbox_y)
+        self.count_image = 0##for counting what image in displaying
+
+    def draw(self,window):##overloading function in base class bullets
+        if self.count_image == 2:
+            self.count_image = 0
+        window.blit(self.image[self.count_image], (self.x, self.y))
+        self.count_image += 1
+
+##shotgun bullets
+class shotgun_bullets(bullets):
+    def __init__(self, x, y, image, radios, mouse_x, mouse_y, start_x, start_y, hitbox_x, hitbox_y):
+        super().__init__(x, y, image, radios, mouse_x, mouse_y, start_x, start_y, hitbox_x, hitbox_y)
+        self.IsShotGun_main = False##true only if you are the bullets in the middle of the 5
+        self.distance = 0
+
 
 
 ##bullets
-class bullets():
+"""class bullets():
     def __init__(self,x,y,image,radios,mouse_x,mouse_y,start_x,start_y,hitbox_x,hitbox_y):
          self.x=x
          self.y=y
@@ -294,7 +383,7 @@ class bullets():
             self.count_image+=1
 
     def draw_rotate(self,window,rotate_img,rect):
-        window.blit(rotate_img, rect)
+        window.blit(rotate_img, rect)"""
 
 
 
@@ -519,8 +608,8 @@ clicked=False
 counter_image=0
 
 
-
-man=player(400,420,64,64,28,55,reg_weapon)
+man_images=man_imgs(walkRight,walkLeft,char)
+man=player(400,420,64,64,28,55,reg_weapon,man_images)
 #meteor_list=[]##before changing to linked list
 meteor_list=linked_list()##meteor linked list 24/7/21
 heart1=life(heart,0,0)
@@ -589,6 +678,7 @@ def refresh_game():
             if a.x > constant_x and a.x < constant_x + 300:
                 if a.y > constant_y and a.y < constant_y + 300:
                     count_score += 50
+                    increase_score()
                     #a.y=600
                     alien_list.Remove(a)
 
@@ -636,6 +726,7 @@ def refresh_game():
                   if meteor.x>constant_x and meteor.x<constant_x+300:
                       if meteor.y>constant_y and meteor.y<constant_y+300:
                           count_score+=10
+                          increase_score()
                           #meteor.y=600##used before changing to linked list
                           meteor_list.Remove(meteor)
 
@@ -855,8 +946,11 @@ def create_alien():
 
     #alien.count_bullet += 1
     alien_list.append(alien)
-    bullet_new = bullets(round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2), alien_bullet, 8, man.x, man.y,  round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2),28,25)
+    #bullet_new = bullets(round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2), alien_bullet, 8, man.x, man.y,  round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2),28,25)
     #bullet_new.my_alien=alien_list.index(alien)
+    bullet_new = bullets(round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2), alien_bullet, 8,
+                         man.x, man.y, round(alien.x + alien.hitbox_x // 2), round(alien.y + alien.hitbox_y // 2), 28,
+                         25)
     #alien_bullet_list.append(bullet_new)
     alien.alien_bullet_list.append(bullet_new)
     move_alien()
@@ -1044,15 +1138,12 @@ def collision():
                                     ##creating weapon prize
                                     if random.randint(0,3)==3:
                                         drop_weapon(meteor.x,meteor.y)
-                                    meteor_list.Remove(meteor)
+
 
                                     bullethit_sound.play()
                                     count_score += 10
 
-                                    if b.image!=lazer_bullet:
-                                        #bullet_list.pop(bullet_list.index(b))
-                                        bullet_list.Remove(b)
-                                        break
+
 
 
                                     #meteor_list.pop(meteor_list.index(meteor))
@@ -1061,17 +1152,24 @@ def collision():
                                     ##changing the height of the meteor to make him disapper without having a problem with the list.
                                     #meteor.y=600
 
+                                    """ ##increasing the difficulty of the game
+                                                                        if count_score % 50 == 0 and change_amount < 16:
+                                                                            change_amount += 2
+                                                                        if count_score % 50 == 0 and change_amount < 21 and change_amount >= 16:
+                                                                            change_amount += 1
+                                                                        if count_score % 100 == 0 and change_amount < 24 and change_amount >= 21:
+                                                                            change_amount += 1
+                                                                        if count_score % 250 == 0 and change_amount < 29 and change_amount >= 24:
+                                                                            change_amount += 1"""
 
-                                    ##increasing the difficulty of the game
-                                    if count_score%50==0 and change_amount<16:
-                                        change_amount+=2
-                                    if count_score%50==0 and change_amount<21 and change_amount>=16:
-                                        change_amount+=1
-                                    if count_score%100==0 and change_amount<24 and change_amount>=21:
-                                        change_amount+=1
-                                    if count_score%250==0 and change_amount<29 and change_amount>=24:
-                                        change_amount+=1
+                                    increase_score()
 
+                                    meteor_list.Remove(meteor)
+
+                                    if b.image!=lazer_bullet:
+                                        #bullet_list.pop(bullet_list.index(b))
+                                        bullet_list.Remove(b)
+                                        break
 
 
 
@@ -1100,13 +1198,6 @@ def collision():
                                      bullethit_sound.play()
                                      count_score += 10
 
-                                     meteor_list.Remove(meteor)  ##with linked list
-
-                                     if b.image != lazer_bullet:
-                                         #bullet_list.pop(bullet_list.index(b))
-                                         #b.y=600
-                                         bullet_list.Remove(b)
-                                         break
 
                                      #meteor_list.pop(meteor_list.index(meteor))
                                      #meteor.y = 600
@@ -1114,7 +1205,7 @@ def collision():
 
 
 
-                                     ##increasing the difficulty of the game
+                                     """ ##increasing the difficulty of the game
                                      if count_score % 50 == 0 and change_amount < 16:
                                          change_amount += 2
                                      if count_score % 50 == 0 and change_amount < 21 and change_amount >= 16:
@@ -1122,9 +1213,17 @@ def collision():
                                      if count_score % 100 == 0 and change_amount < 24 and change_amount >= 21:
                                          change_amount += 1
                                      if count_score % 250 == 0 and change_amount < 29 and change_amount >= 24:
-                                         change_amount += 1
+                                         change_amount += 1"""
 
+                                     increase_score()
 
+                                     meteor_list.Remove(meteor)  ##with linked list
+
+                                     if b.image != lazer_bullet:
+                                         # bullet_list.pop(bullet_list.index(b))
+                                         # b.y=600
+                                         bullet_list.Remove(b)
+                                         break
 
         ##collision between player bullet and alien ship
         for b in bullet_list:
@@ -1149,6 +1248,7 @@ def collision():
 
                                         bullethit_sound.play()
                                         count_score+=50
+                                        increase_score()
                                         ##adding ammo for destroying the ship:
                                         if man.weapon != reg_weapon and man.weapon!=blackhole_weapon:
                                             man.ammo += 15
@@ -1232,7 +1332,17 @@ def collision():
 
                         dmg_sound.play()
 
-
+def increase_score():
+    ##increasing the difficulty of the game
+    global change_amount,count_score
+    if count_score % 50 == 0 and change_amount < 16:
+        change_amount += 2
+    if count_score % 50 == 0 and change_amount < 21 and change_amount >= 16:
+        change_amount += 1
+    if count_score % 100 == 0 and change_amount < 24 and change_amount >= 21:
+        change_amount += 1
+    if count_score % 250 == 0 and change_amount < 29 and change_amount >= 24:
+        change_amount += 1
 
 ##creating a bullet
 def bullet_create(pos_x,pos_y):
@@ -1243,7 +1353,9 @@ def bullet_create(pos_x,pos_y):
         bullet_list.append(bullet_new)
      ##creating big bullet
      elif man.weapon==bigbullet_weapon:
-         bullet_new = bullets(round(man.x + man.width // 2), round(man.y + man.height // 2),big_bullet, 12, pos_x, pos_y,round(man.x + man.width // 2), round(man.y + man.height // 2),34,34)
+         #bullet_new = bullets(round(man.x + man.width // 2), round(man.y + man.height // 2),big_bullet, 12, pos_x, pos_y,round(man.x + man.width // 2), round(man.y + man.height // 2),34,34)
+         bullet_new = big_bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), big_bullet, 12, pos_x,
+                              pos_y, round(man.x + man.width // 2), round(man.y + man.height // 2), 34, 34)
          man.ammo -= 1
          bullet_list.append(bullet_new)
      ##creating machine gun bullet
@@ -1259,15 +1371,15 @@ def bullet_create(pos_x,pos_y):
          bullet_list.append(bullet_new)
      ##creating shotgun bullets
      elif man.weapon==shotgun_weapon:
-         bullet_new1 = bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
+         bullet_new1 = shotgun_bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
                               pos_x, pos_y, round(man.x + man.width // 2), round(man.y + man.height // 2), 24, 13)
-         bullet_new2 = bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
+         bullet_new2 = shotgun_bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
                               pos_x, pos_y, round(man.x + man.width // 2), round(man.y + man.height // 2), 24, 13)
-         bullet_new3 = bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
+         bullet_new3 = shotgun_bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
                               pos_x, pos_y, round(man.x + man.width // 2), round(man.y + man.height // 2), 24, 13)
-         bullet_new4 = bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
+         bullet_new4 = shotgun_bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
                                pos_x, pos_y, round(man.x + man.width // 2), round(man.y + man.height // 2), 24, 13)
-         bullet_new5 = bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
+         bullet_new5 = shotgun_bullets(round(man.x + man.width // 2), round(man.y + man.height // 2), shotgun_bullet, 4,
                                pos_x, pos_y, round(man.x + man.width // 2), round(man.y + man.height // 2), 24, 13)
 
          bullet_new1.IsShotGun_main=True
@@ -1585,8 +1697,8 @@ def main_game():
     count_step = 0
     count_score = 0
     new_ammo = []
-    man.ammo=0
-    man.weapon=reg_weapon
+    man.ammo=2500
+    man.weapon=shotgun_weapon
     menu_music.stop()
     while mainloop:
         clock.tick(27)
